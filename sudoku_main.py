@@ -69,9 +69,18 @@ for num in range(len(indexes_numbers)):
 digit_img = cv2.hconcat(img)
 plotCVImg.plotImg(digit_img, "digit")
 
+# knn 识别数字
 test = np.zeros(shape=(len(indexes_numbers), NUM_WIDTH * NUM_HEIGHT))
 for num in range(len(indexes_numbers)):
     test[num] = sudoku[indexes_numbers[num]]
 test = test.reshape(-1, NUM_WIDTH * NUM_HEIGHT).astype(np.float32)
 
 result = knn_ocr.knn_ocr_normal(test)
+# 使用识别结果构建数独问题的二维数组，其他数字用0表示 build a puzzle 2D-array using the result of OCR
+sudoku_puzzle = np.zeros(SUDOKU_SIZE * SUDOKU_SIZE)
+for num in range(len(indexes_numbers)):
+    sudoku_puzzle[indexes_numbers[num]] = result[num]
+sudoku_str = ''.join(sudoku_puzzle.astype(int).astype(str))
+sudoku_9x9 = sudoku_puzzle.reshape((SUDOKU_SIZE, SUDOKU_SIZE)).astype(np.int32)
+print(sudoku_9x9)
+print(sudoku_str)
