@@ -8,6 +8,8 @@ import extractNumber
 from knn import knn_ocr
 from PIL import ImageGrab
 from config import *
+import os
+os.chdir(os.path.dirname(__file__))
 
 while True:
     while True:

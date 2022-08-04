@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="211f9a01-9fb6-448a-9663-c1a269d0df37" name="Default Changelist" comment="输出字符串及网格图">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="211f9a01-9fb6-448a-9663-c1a269d0df37" name="Default Changelist" comment="保持运行" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,7 +196,7 @@
       <workItem from="1659523014316" duration="8179000" />
       <workItem from="1659593238549" duration="18000" />
       <workItem from="1659597177244" duration="8788000" />
-      <workItem from="1659615251413" duration="364000" />
+      <workItem from="1659615251413" duration="592000" />
     </task>
     <task id="LOCAL-00001" summary="首次提交">
       <created>1542878600760</created>
@@ -235,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659613344843</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="保持运行">
+      <created>1659615843331</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659615843331</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -293,7 +298,8 @@
     <MESSAGE value="add readme" />
     <MESSAGE value="knn" />
     <MESSAGE value="输出字符串及网格图" />
-    <option name="LAST_COMMIT_MESSAGE" value="输出字符串及网格图" />
+    <MESSAGE value="保持运行" />
+    <option name="LAST_COMMIT_MESSAGE" value="保持运行" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
