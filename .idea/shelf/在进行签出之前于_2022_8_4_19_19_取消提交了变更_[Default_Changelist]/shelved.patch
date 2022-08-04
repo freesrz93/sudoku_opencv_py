@@ -1,0 +1,84 @@
+Index: sudoku_main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/sudoku_main.py b/sudoku_main.py
+--- a/sudoku_main.py	
++++ b/sudoku_main.py	
+@@ -6,6 +6,7 @@
+ import correction
+ import extractNumber
+ from PIL import ImageGrab
++from knn import knn_ocr
+ from config import *
+ 
+ 
+@@ -68,3 +69,9 @@
+ digit_img = cv2.hconcat(img)
+ plotCVImg.plotImg(digit_img, "digit")
+ 
++test = np.zeros(shape=(len(indexes_numbers), NUM_WIDTH * NUM_HEIGHT))
++for num in range(len(indexes_numbers)):
++    test[num] = sudoku[indexes_numbers[num]]
++test = test.reshape(-1, NUM_WIDTH * NUM_HEIGHT).astype(np.float32)
++
++result = knn_ocr.knn_ocr_normal(test)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -96,22 +96,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Project.color": "42623f",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "D:/Project/sudoku_opencv_py",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Project.color&quot;: &quot;42623f&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/Project/sudoku_opencv_py&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+   },
+-  "keyToStringList": {
+-    "com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件": [
+-      "Python"
++  &quot;keyToStringList&quot;: {
++    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/新建临时文件&quot;: [
++      &quot;Python&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\Project\sudoku_opencv_py" />
+Index: config.py
+===================================================================
+diff --git a/config.py b/config.py
+--- a/config.py	
++++ b/config.py	
+@@ -1,7 +1,7 @@
+ DEBUG = 1
+ GRID_WIDTH = 100
+ GRID_HEIGHT = GRID_WIDTH
+-NUM_WIDTH = 50
++NUM_WIDTH = 20
+ NUM_HEIGHT = NUM_WIDTH
+ SUDOKU_SIZE = 9
+ N_MIN_ACTIVE_PIXELS = 20
