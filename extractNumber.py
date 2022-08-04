@@ -1,15 +1,7 @@
 # -*- coding: utf-8 -*-
 import cv2
 import numpy as np
-
-# 标准方格大小
-GRID_WIDTH = 40
-GRID_HEIGHT = 40
-# 标准数字大小
-NUM_WIDTH = 20
-NUM_HEIGHT = 20
-# 判定非零像素书最小阈值
-N_MIN_ACTIVE_PIXELS = 30
+from config import *
 
 
 def preprocess_grid(im_number):
