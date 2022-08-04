@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import plotCVImg
 import correction
 import extractNumber
-from PIL import Image, ImageGrab
+from PIL import ImageGrab
 from config import *
 
 
@@ -53,17 +53,15 @@ if DEBUG:
     row = 0
     for x in range(len(indexes_numbers)):
         ind = indexes_numbers[x]
-
         if (x % 5) == 0 and x != 0:
             row = row + 1
-        axarr[row, x % 5].imshow(cv2.resize(sudoku[ind, :].reshape(NUM_WIDTH, NUM_HEIGHT),
-                                            (NUM_WIDTH * 5, NUM_HEIGHT * 5)), cmap=plt.gray())
+        axarr[row, x % 5].imshow(cv2.resize(sudoku[ind, :].reshape(NUM_WIDTH, NUM_HEIGHT), (NUM_WIDTH * 5, NUM_HEIGHT * 5)), cmap=plt.gray())
     for i in range(rows):
         for j in range(5):
             axarr[i, j].axis("off")
     plt.show()
 
-# 构建测试数据集 build a test data set for knn
+# 单个数字图
 img = np.zeros(shape=(len(indexes_numbers), NUM_WIDTH, NUM_HEIGHT))
 for num in range(len(indexes_numbers)):
     img[num] = sudoku[indexes_numbers[num]].reshape(NUM_WIDTH, NUM_HEIGHT)
