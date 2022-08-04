@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 import plotCVImg
 import correction
 import extractNumber
+from knn import knn_ocr
 from PIL import ImageGrab
 from config import *
 
@@ -68,3 +69,9 @@ for num in range(len(indexes_numbers)):
 digit_img = cv2.hconcat(img)
 plotCVImg.plotImg(digit_img, "digit")
 
+test = np.zeros(shape=(len(indexes_numbers), NUM_WIDTH * NUM_HEIGHT))
+for num in range(len(indexes_numbers)):
+    test[num] = sudoku[indexes_numbers[num]]
+test = test.reshape(-1, NUM_WIDTH * NUM_HEIGHT).astype(np.float32)
+
+result = knn_ocr.knn_ocr_normal(test)

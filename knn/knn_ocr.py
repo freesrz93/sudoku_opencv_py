@@ -5,8 +5,8 @@ import numpy as np
 
 def knn_ocr_normal(test):
     # 训练knn模型
-    samples = np.load('samples.npy')
-    labels = np.load('label.npy')
+    samples = np.load('./knn/samples.npy')
+    labels = np.load('./knn/label.npy')
 
     knn = cv2.ml.KNearest_create()
     knn.train(samples, cv2.ml.ROW_SAMPLE, labels)
