@@ -39,18 +39,18 @@ def correct2(img_original):
 
     # 合并轮廓
     merge_list = contours
-    contours_merge = np.vstack([merge_list[0], merge_list[1]])
-    for i in range(2, len(merge_list)):
-        contours_merge = np.vstack([contours_merge, merge_list[i]])
-
-    rect2 = cv2.minAreaRect(contours_merge)
-    box2 = cv2.boxPoints(rect2)
-    box2 = np.int0(box2)
-    contours = [box2]
-    if DEBUG:
-        img_contours = img_original.copy()
-        cv2.drawContours(img_contours, contours, -1, (0, 0, 255), 2)
-        plotCVImg.plotImg(img_contours, "contours_merge")
+    if len(merge_list)>=2:
+        contours_merge = np.vstack([merge_list[0], merge_list[1]])
+        for i in range(2, len(merge_list)):
+            contours_merge = np.vstack([contours_merge, merge_list[i]])
+        rect2 = cv2.minAreaRect(contours_merge)
+        box2 = cv2.boxPoints(rect2)
+        box2 = np.int0(box2)
+        contours = [box2]
+        if DEBUG:
+            img_contours = img_original.copy()
+            cv2.drawContours(img_contours, contours, -1, (0, 0, 255), 2)
+            plotCVImg.plotImg(img_contours, "contours_merge")
 
     # find the biggest contours
     size_rectangle_max = 0

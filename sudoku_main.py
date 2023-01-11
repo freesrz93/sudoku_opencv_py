@@ -69,7 +69,7 @@ while True:
     for num in range(len(indexes_numbers)):
         img[num] = sudoku[indexes_numbers[num]].reshape(NUM_WIDTH, NUM_HEIGHT)
     digit_img = cv2.hconcat(img)
-    plotCVImg.plotImg(digit_img, "digit")
+    # plotCVImg.plotImg(digit_img, "digit")
 
     # knn 识别数字
     test = np.zeros(shape=(len(indexes_numbers), NUM_WIDTH * NUM_HEIGHT))
@@ -86,3 +86,6 @@ while True:
     sudoku_9x9 = sudoku_puzzle.reshape((SUDOKU_SIZE, SUDOKU_SIZE)).astype(np.int32)
     print(sudoku_9x9)
     print(sudoku_str)
+    plotCVImg.plotImg(img_original, "original")
+    input()
+    
